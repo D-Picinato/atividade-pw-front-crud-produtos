@@ -9,6 +9,7 @@ import CreateProductPage from './pages/product/create';
 import LayoutProduct from './pages/product/layout';
 import ListProductPage from './pages/product/list';
 import UpdateProductPage from './pages/product/update';
+import RegisterPage from './pages/user/register';
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 1000 * 60, retry: 2 } },
@@ -30,6 +31,10 @@ createRoot(document.getElementById('root')!).render(
             <Route
               path="new"
               element={<CreateProductPage />}
+            />
+            <Route
+              path="user"
+              element={<RegisterPage />}
             />
             <Route
               path="update/:id"

@@ -1,4 +1,8 @@
-import { HiOutlineListBullet, HiOutlinePlus } from 'react-icons/hi2';
+import {
+  HiOutlineListBullet,
+  HiOutlinePlus,
+  HiOutlineUser,
+} from 'react-icons/hi2';
 import { NavLink, Outlet } from 'react-router-dom';
 
 const linkStyle =
@@ -12,6 +16,15 @@ export default function LayoutProduct() {
       <header className="flex w-full justify-center gap-2 border-b-2 p-2">
         <nav className="flex justify-center">
           <ul className="flex items-center gap-2">
+            <li>
+              <NavLink
+                to="/user"
+                className={linkStyle}
+              >
+                <HiOutlineUser />
+                <span>Usuário</span>
+              </NavLink>
+            </li>
             <li>
               <NavLink
                 to="/"
