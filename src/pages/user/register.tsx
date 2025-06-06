@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { viacep } from '@/api/viacep';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import {
@@ -27,6 +28,12 @@ export default function RegisterPage() {
   const onSubmit = (user: RegisterUserSchemaType) =>
     setUsers(prev => [...prev, user]);
 
+  const watchCep = form.watch('cep');
+
+  useEffect(() => {
+    viacep();
+  }, [watchCep]);
+
   return (
     <div className="flex flex-col items-center gap-2 md:px-40">
       <Form {...form}>
@@ -34,6 +41,8 @@ export default function RegisterPage() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-4"
         >
+          <h3>Dados Pessoais</h3>
+
           <FormField
             control={form.control}
             name="name"
@@ -101,6 +110,8 @@ export default function RegisterPage() {
               </FormItem>
             )}
           />
+
+          <h3 className="mt-2">Endereço</h3>
 
           <FormField
             control={form.control}
@@ -223,6 +234,8 @@ export default function RegisterPage() {
               </FormItem>
             )}
           />
+
+          <h3 className="mt-2">Dados de Cadastro</h3>
 
           <FormField
             control={form.control}
